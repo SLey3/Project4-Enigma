@@ -11,9 +11,9 @@ lamp_key_state = key_state.copy()
 
 
 class EnigmaRotor:
-    def __init__(self, index: int, offset: int = 0):
+    def __init__(self, index: int):
         self.permutation = ROTOR_PERMUTATIONS[index]
-        self.offset = offset
+        self.offset = 0
         self.index = index
         self.inverted_permutation = self.invert_key(self.permutation)
 
