@@ -111,16 +111,16 @@ class EnigmaModel:
                 rotors[0].advance()
 
         enc = apply_permutation(ALPHABET.find(letter), rotors[2].get_permutation(), rotors[2].get_offset())
-        # enc = apply_permutation(ALPHABET.find(enc), rotors[1].get_permutation(), rotors[1].get_offset())
-        # enc = apply_permutation(ALPHABET.find(enc), rotors[0].get_permutation(), rotors[0].get_offset())
+        enc = apply_permutation(ALPHABET.find(enc), rotors[1].get_permutation(), rotors[1].get_offset())
+        enc = apply_permutation(ALPHABET.find(enc), rotors[0].get_permutation(), rotors[0].get_offset())
 
-        # reflected_enc = REFLECTOR_PERMUTATION[ALPHABET.find(enc)]
+        reflected_enc = REFLECTOR_PERMUTATION[ALPHABET.find(enc)]
 
-        # encrypted = apply_permutation(ALPHABET.find(reflected_enc), rotors[0].get_inv_permutation(), rotors[0].get_offset())
-        # encrypted = apply_permutation(ALPHABET.find(encrypted), rotors[1].get_inv_permutation(), rotors[1].get_offset())
-        # encrypted = apply_permutation(ALPHABET.find(encrypted), rotors[2].get_inv_permutation(), rotors[2].get_offset())
+        encrypted = apply_permutation(ALPHABET.find(reflected_enc), rotors[0].get_inv_permutation(), rotors[0].get_offset())
+        encrypted = apply_permutation(ALPHABET.find(encrypted), rotors[1].get_inv_permutation(), rotors[1].get_offset())
+        encrypted = apply_permutation(ALPHABET.find(encrypted), rotors[2].get_inv_permutation(), rotors[2].get_offset())
 
-        self.lamp = enc
+        self.lamp = encrypted
         key_state[letter] = True
         lamp_key_state[self.lamp] = True
         self.update()
